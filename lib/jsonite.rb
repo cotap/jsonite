@@ -106,8 +106,8 @@ class Jsonite
     #   #     }
     #   #   }
     #   # }
-    def link rel = :self, options = {}, &handler
-      links[rel.to_s] = { handler: Proc.new }.merge options # require handler
+    def link rel = :self, options = {}, &block
+      links[rel.to_s] = { handler: (block if block_given?) }.merge options # require handler
     end
 
     def links
